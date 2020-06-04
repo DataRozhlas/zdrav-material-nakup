@@ -58,6 +58,7 @@ ax.yaxis.set_ticks_position('none')
 
 ax.set_xlabel('miliony Kč, bez DPH')
 ax.set_title('Nákupy ústenek')
+plt.tight_layout()
 plt.savefig('tst.svg')
 
 # %%
