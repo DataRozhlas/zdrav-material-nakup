@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<meta 
+     name='viewport' 
+     content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' 
+/>
+
+<div id="graf_sumy"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/vega@5.12.1"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-lite@4.13.0"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.8.0"></script>
+
+    <style media="screen">
+      /* Add space between Vega-Embed links  */
+      summary {display: none}
+      #graf_sumy {
+          width: 100%;
+          max-width: 310px;
+      } 
+    </style>
+
+<script>
+    const data = [['3DEES INDUSTRIES S.R.O.', 2000000.0],
+    ['A.M.I. - ANALYTICAL   MEDICAL INSTRUMENTS   S.R.O.', 4132100.0],
+    ['ADLER CZECH, A.S.', 595135839.1800001],
+    ['ALLIANCE HEALTHCARE', 901250.0],
+    ['ALZA.CZ, A.S.', 1485300.0],
+    ['AROMA PRAHA, A.S.', 1173198.0],
+    ['AVESTECH GMBH', 63240000.0],
+    ['BATIST MEDICAL A.S.', 177187469.29999998],
+    ['BIOGEN PRAHA S.R.O.', 4368000.0],
+    ['BIOVENDOR - LABORATORNÍ   MEDICÍNA A.S.', 396000.0],
+    ['BLACK-STORM S.R.O.', 10804800.0],
+    ['BLYTH, S.R.O.', 142080.0],
+    ['BRO OFFICE SOLUTIONS SDN.   BHD.', 5503160.0],
+    ['CAG ELECTRIC MACHINERY   S.R.O.', 11116485.95],
+    ['CANIS PLUS, S.R.O.', 10573440.0],
+    ['CARDAM S.R.O.', 45750000.0],
+    ['CEDES LOGISTIK S.R.O.', 111871380.0],
+    ['CENTRAL EXPORT S.R.O.', 2925000.0],
+    ['CHEIRÓN A.S.', 44196000.0],
+    ['CHINA FUNDED HUAXIA   PHARMACEUTICAL SALES   CO., LTD.', 91300000.0],
+    ['CONCEPT RUBBER PRODUCTS   SDN.BHD.', 5521625.72],
+    ['CREATIVE TOOLS S.R.O.', 680000.0],
+    ['DINA-HITEX, SPOL. S R.O.', 2105950.0],
+    ['DYNEX TECHNOLOGIES, SPOL.   S R.O.', 4850000.0],
+    ['ELEKTA, S.R.O.', 52044.0],
+    ['GETINGE CZECH REPUBLIC,   S.R.O.', 22500000.0],
+    ['GRANTH HELP S.R.O.', 11500000.0],
+    ['HARTMANN - RICO, A.S.', 1017000.0],
+    ['HCP MEDIPRO S.R.O.', 97000194.0],
+    ['I.T.A. - INTERTACT S.R.O.', 29565900.0],
+    ['IMMOMEDICAL CZ S.R.O.', 1375000.0],
+    ['INSPERIT, S.R.O.', 990000.0],
+    ['INVEOX GMBH', 23800000.0],
+    ['JB PHARMA S.R.O.', 5448184.0],
+    ['KLATT S.R.O.', 672000.0],
+    ['KRYPTON EUROPE S.R.O.', 1568548.8],
+    ['LA FACTORY S.R.O.', 634293906.7],
+    ['LION MOBILE, S.R.O.', 7810400.0],
+    ['MED-LAB TRADE S.R.O.', 575200.0],
+    ['MEDESA S.R.O.', 306180.0],
+    ['MEDICA FILTER S.R.O.', 101990.0],
+    ['MEDICAL M SPOL. S R.O.', 1050000.0],
+    ['MEDICALFOX S.R.O.', 17820000.0],
+    ['MEDIFINE, A.S.', 7093750.0],
+    ['MEDISERVIS S.R.O.', 68750000.0],
+    ['MEDISTA SPOL. S R.O.', 16156600.0],
+    ['MEDSOL S.R.O.', 1768000.0],
+    ['MEP ENVIRO TECHNOLOGY   SND BHD', 8646976.0],
+    ['MOLDEX/METRIC V.O.S.', 21168000.0],
+    ['MR INVEST GROUP S.R.O.', 2325000.0],
+    ['MSM. SPOL. S R.O.', 176850.0],
+    ['MUF-PRO S.R.O.', 149300.0],
+    ['NANO PLM+ S.R.O.', 6766000.0],
+    ['NANOLOGIX CORPORATION,   S.R.O.', 5522999.9],
+    ['NARRAN, S.R.O.', 1840000.0],
+    ['NOVUM PHARMA BV', 41140000.0],
+    ['OKULA NÝRSKO A.S.', 5426582.0],
+    ['PANEP, S.R.O.', 362000.0],
+    ['PARDAM, S.R.O.', 761200.0],
+    ['PHARMEDEX S.R.O.', 5919750.0],
+    ['PHOENIX LÉKÁRENSKÝ   VELKOOBCHOD, S.R.O.', 16468400.0],
+    ['PLEAS, A.S.', 8700000.0],
+    ['PRACOVNÍ ODĚVY KOUTNÍK A   SPOL., S.R.O.', 269160.0],
+    ['PROMEDICA PRAHA GROUP,   A.S.', 3082990.0],
+    ['PROMORAIN, S.R.O.', 3935090.0],
+    ['RECEA PRAGUE', 11832000.0],
+    ['REFIL, SPOL. S R.O.', 27104490.0],
+    ['RESMED CZ, S.R.O.', 1953288.8],
+    ['RESPILON GROUP S.R.O.', 102000.0],
+    ['RICHTER MEDICAL, S.R.O.', 507000.0],
+    ['ROXOM GROUP, S.R.O.', 47320.0],
+    ['ROYAL INVESCO', 46614235.2],
+    ['S&T PLUS S.R.O.', 28120000.0],
+    ['SIEMENS HEALTHCARE S.R.O.', 10504000.0],
+    ['SIGMA VÝZKUMNÝ A   VÝVOJOVÝ ÚSTAV S.R.O.', 7800000.0],
+    ['SOCIAL VISION S.R.O.', 137000.0],
+    ['STÁTNÍ VETERINÁRNÍ ÚSTAV   OLOMOUC', 16020.0],
+    ['SUPERVIZE HOLOGRAMY   S.R.O.', 60000000.0],
+    ['TARGO PROMOTION PRAHA   SPOL. S R.O.', 55853000.0],
+    ['TOMIS CZ, S.R.O.', 350534.8],
+    ['VULKAN - MEDICAL, A.S.', 153110.0],
+    ['WORKSWELL S.R.O.', 6317100.0],
+    ['XIAOMI STORE CZ S.R.O.', 7920000.0],
+    ['ZDRAVTEX S.R.O.', 70800.0]]
+
+    let d = data.map(v => {
+        return  {'j': v[0], 'c': v[1] / 1000000}
+    })
+
+    d = d.slice(0,20)
+
+    var vlSpec = {
+        $schema: 'https://vega.github.io/schema/vega-lite/v4.json',
+        title: 'Celkové nákupy ochranných pomůcek',
+        data: {
+          values: d
+        },
+        width: 'container',
+        mark: 'bar',
+        encoding: {
+          y: {
+              field: 'j', 
+              type: 'ordinal',
+              sort: '-x',
+              axis: {
+                  'title': ''
+              }
+            },
+          x: {
+            field: 'c',
+            type: 'quantitative',
+            axis: {
+              title: 'miliony Kč, bez DPH'
+            }
+          }
+        }
+      };
+
+    vegaEmbed('#graf_sumy', vlSpec)
+</script>
